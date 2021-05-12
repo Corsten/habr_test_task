@@ -1,24 +1,7 @@
-# README
+Создать приложение, предоставляющее API для работы с заметками. Заметки хранятся в базе данных, можно использовать любую.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Модель заметки: Название Описание Дата создания Дата обновления
 
-Things you may want to cover:
+Авторизация не нужна.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+API должно уметь создавать, изменять и удалять заметки как по одной, так и группами. Так же можно получить информацию о конкретной заметке. Пользователь, отправивший запрос на создание группы заметок, должен иметь возможность понять, какие заметки он создал. Приложение должно быть ориентировано на максимальную скорость работы в условиях высокой нагрузки
