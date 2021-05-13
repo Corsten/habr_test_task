@@ -6,7 +6,7 @@ class CreateNotes < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :description
 
-      t.timestamps
+      t.timestamps default: -> { 'CURRENT_TIMESTAMP' }
     end
   end
 end
