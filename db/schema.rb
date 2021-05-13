@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(version: 2021_05_12_131102) do
   create_table "notes", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "queue_hash"
     t.datetime "created_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", precision: 6, default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["queue_hash"], name: "index_notes_on_queue_hash", unique: true
   end
 
 end

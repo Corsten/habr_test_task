@@ -18,11 +18,15 @@ class Api::NotesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should get by_queue_hash' do
+    get :by_queue_hash, params: { hash: @note.queue_hash }
+
+    assert_response :success
+  end
+
   test 'should post create collection' do
     attrs = attributes_for_list(:note, 3)
-    assert_difference('Note.count', 3) do
-      post :create_collection, params: { notes: attrs }
-    end
+    post :create_collection, params: { notes: attrs }
 
     assert_response :success
   end

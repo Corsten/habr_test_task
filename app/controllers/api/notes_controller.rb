@@ -14,6 +14,12 @@ class Api::NotesController < Api::ApplicationController
     render json: notes.result
   end
 
+  def by_queue_hash
+    notes = Note.where(queue_hash: params[:hash])
+
+    render json: notes
+  end
+
   def create
     note = Note.new(member_permitted_params)
 
@@ -25,11 +31,8 @@ class Api::NotesController < Api::ApplicationController
   end
 
   def create_collection
-    notes = Note.insert_all(collection_permitted_params, returning: %w[id name description])
-
-    render json: notes
-  rescue ActiveRecord::RecordInvalid
-    render_error :unprocessable_entity, :error
+    queue_hash = NoteService.import_notes(collection_permitted_params, 'create')
+    render json: { code: :ok, queue_hash: queue_hash }
   end
 
   def update
@@ -43,11 +46,8 @@ class Api::NotesController < Api::ApplicationController
   end
 
   def update_collection
-    notes = Note.upsert_all(collection_permitted_params, returning: %w[id name description])
-
-    render json: notes
-  rescue ActiveRecord::RecordInvalid
-    render json: { code: :error }, status: :unprocessable_entity
+    queue_hash = NoteService.import_notes(collection_permitted_params, 'update')
+    render json: { code: :ok, queue_hash: queue_hash }
   end
 
   def destroy

@@ -24,6 +24,10 @@ gem 'pghero'
 gem 'pg_query'
 gem 'pgslice'
 gem 'ransack'
+gem 'redis'
+gem 'resque'
+gem 'resque-retry'
+gem 'resque-scheduler'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -59,6 +63,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
+  gem 'fakeredis', github: 'guilleiguaran/fakeredis'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'

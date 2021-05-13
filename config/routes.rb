@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         delete :destroy_collection
         patch :update_collection
         post :create_collection
+        get 'notes(/:hash)', to: 'notes#by_queue_hash'
       end
     end
   end
