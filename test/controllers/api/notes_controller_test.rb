@@ -25,7 +25,7 @@ class Api::NotesControllerTest < ActionController::TestCase
   end
 
   test 'should post create collection' do
-    attrs = attributes_for_list(:note, 3)
+    attrs = attributes_for_list(:note, 3000)
     post :create_collection, params: { notes: attrs }
 
     assert_response :success
